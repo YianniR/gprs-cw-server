@@ -5,10 +5,6 @@ myApp.config(function($routeProvider){
 		controller:'temp_selected_controller',
 		templateUrl: 'views/main.html'
 	})
-	.when('/temp_select_date',{
-		//controller:'temp_selected_controller',
-		templateUrl: 'views/temp_select_date.html'
-	})
 	.when('/temp_data/:date',{
 		controller: 'tempController',
 		templateUrl: 'views/temp_data.html'
@@ -23,5 +19,13 @@ myApp.config(function($routeProvider){
 	})
 	.when('/register_success',{
 		templateUrl: 'views/register_success.html'
+	})
+	.when('/not_registered',{
+		controller: 'register_device_controller',
+		templateUrl: 'views/unregistered_device.html'
+	})
+	.when('/about',{
+		controller: 'register_device_controller',
+		templateUrl: 'views/about.html'
 	})
 });
