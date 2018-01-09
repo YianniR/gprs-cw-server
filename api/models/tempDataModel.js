@@ -10,9 +10,13 @@ var tempSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  reading: {
-    type: Number,
-    default: 999
+  data: {
+    type: Array,
+    default: [999,999,999]
+  },
+  datatypes: {
+    type: Array,
+    default: ['T','P','H']
   }
 });
 

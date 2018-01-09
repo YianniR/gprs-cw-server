@@ -21,16 +21,8 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
       var localtempdate = new Array();
 
 
-      if (localData.length<=10) {
-       for (i = 0; i<localData.length; i++ ){
-        localtemp.push(localData[i].reading);
-        localtempdate.push(localData[i].createdDate);
-        };
-      }
-
-      else
-        for (i = localData.length-10; i<localData.length; i++ ){
-        localtemp.push(localData[i].reading);
+      for (i = 0; i<localData.length; i++ ){
+        localtemp.push(localData[i].reading[1]);
         localtempdate.push(localData[i].createdDate);
       };
 
