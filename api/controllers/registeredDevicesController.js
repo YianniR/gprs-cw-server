@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-  sensorData = mongoose.model('tempData');
+  sensorData = mongoose.model('registerData');
 
 exports.list_all_sensorData = function(req, res) {
   sensorData.find({}, function(err, sensorData) {
@@ -16,16 +16,10 @@ exports.readbyDate_sensorData = function(req,res){
     if (err)
       res.send(err);
     var search_data = sensorData.filter(function(value){
-      var query_imei = req.params.imei;
+
       var query_date = new Date(req.params.sensorDataCreatedDate);
-      
       var data_date = new Date(value.createdDate);
-      var data_imei = value.id;
-      if(data_date.getDate()==query_date.getDate()){
-        if(query_imei==data_imei){
-          return true;
-        }
-      }
+      return data_date.getDate()==query_date.getDate();
     })
     res.json(search_data);
   });

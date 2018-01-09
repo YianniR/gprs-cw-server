@@ -5,7 +5,7 @@ module.exports = function(app) {
     .get(sensorData.list_all_sensorData)
     .post(sensorData.create_sensorData);
 
-  app.route('/api/temp/:sensorDataCreatedDate')
+  app.route('/api/temp/:imei/:sensorDataCreatedDate')
     .get(sensorData.readbyDate_sensorData)
 
 };

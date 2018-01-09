@@ -3,7 +3,7 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   tempData = require('./api/models/tempDataModel'), //created model loading here
-  motionData = require('./api/models/motionDataModel'), //created model loading here
+  motionData = require('./api/models/registeredDevicesModel'), //created model loading here
   bodyParser = require('body-parser');
   
 app.use(express.static(__dirname+'/public'));
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 var routes = require('./api/routes/tempDataRoutes'); //importing route
 routes(app); //register the route
 
-var routes = require('./api/routes/motionDataRoutes'); //importing route
+var routes = require('./api/routes/registeredDevicesRoutes'); //importing route
 routes(app); //register the route
 
 app.listen(port);

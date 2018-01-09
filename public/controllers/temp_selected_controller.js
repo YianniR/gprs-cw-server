@@ -6,8 +6,9 @@
       
       document.getElementById('search-button').onclick = function () {
       search_date=document.getElementById('selected-date').value;
-      console.log(search_date);
-      location.href = "#!/tempfigure/"+search_date;
+      imei=document.getElementById('imei').value;
+      console.log(imei);
+      location.href = "#!/tempfigure/"+imei+"/"+search_date;
     };
   };
 }])

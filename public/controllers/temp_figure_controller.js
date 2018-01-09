@@ -5,12 +5,15 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
 
   	$scope.getTempfigure = function(){
       var date = $routeParams.date;
+      var imei = $routeParams.id;
+
       if(date.length > 1){
-        var apiurl="/api/temp/" + date;
+        var apiurl="/api/temp/" + imei + "/"+ date;
       }
       else{
-        var apiurl = "/api/temp";
+        var apiurl = "/api/temp/"+imei;
       }
+      console.log(apiurl);
 
       $http.get(apiurl).then(function(responce){
         localData = responce.data;
@@ -27,7 +30,7 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
       for (i = 0; i<localData.length; i++ ){
           localtemp.push(localData[i].data[0]);
           localhumi.push(localData[i].data[1]);
-          localmove.push(localData[i].data[3]);
+          localmove.push(localData[i].data[2]);
           localtempdate.push(localData[i].createdDate);
       };
 
@@ -50,6 +53,9 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
       };
 
       var tempchart = document.getElementById('tempchart').getContext('2d');
+      var humichart = document.getElementById('humichart').getContext('2d');
+      var movechart = document.getElementById('movechart').getContext('2d');
+
       console.log(tempchart);
       Chart.defaults.global.defaultFontFamily = 'Lato';
       Chart.defaults.global.defaultFontSize = 18;
@@ -107,6 +113,118 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
           }
         }
       });
+
+      var HumiChart = new Chart(humichart, {
+        type:'line', 
+        data:{
+          
+          labels: date_updated,
+          datasets:[{
+            label:'Humidity',
+            data: localhumi,
+            
+            backgroundColor:[
+              
+              'rgba(100, 200, 255, 0.6)'
+            ],
+            borderWidth:1,
+            borderColor:'#777',
+            hoverBorderWidth:3,
+            hoverBorderColor:'#000'
+          }]
+        },
+        options:{
+          title:{
+            display:true,
+            text:'Humidity in room',
+            fontSize:25
+          },
+          legend:{
+            display:true,
+            position:'right',
+            labels:{
+              fontColor:'#000'
+            }
+          },
+          layout:{
+            padding:{
+              left:50,
+              right:0,
+              bottom:0,
+              top:0
+            }
+          },
+          tooltips:{
+            enabled:true
+          },
+          scales:{
+            yAxes:[{
+              ticks:{
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+
+      var MoveChart = new Chart(movechart, {
+        type:'line', 
+        data:{
+          
+          labels: date_updated,
+          datasets:[{
+            label:'Movement',
+            data: localmove,
+            
+            backgroundColor:[
+              
+              'rgba(200, 255, 100, 0.6)'
+            ],
+            borderWidth:1,
+            borderColor:'#777',
+            hoverBorderWidth:3,
+            hoverBorderColor:'#000'
+          }]
+        },
+        options:{
+          title:{
+            display:true,
+            text:'Movement in room',
+            fontSize:25
+          },
+          legend:{
+            display:true,
+            position:'right',
+            labels:{
+              fontColor:'#000'
+            }
+          },
+          layout:{
+            padding:{
+              left:50,
+              right:0,
+              bottom:0,
+              top:0
+            }
+          },
+          tooltips:{
+            enabled:true
+          },
+          scales:{
+            yAxes:[{
+              ticks:{
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+
+
+
+
+
+
     })
   };
 }])

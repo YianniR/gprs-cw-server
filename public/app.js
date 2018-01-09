@@ -13,16 +13,15 @@ myApp.config(function($routeProvider){
 		controller: 'tempController',
 		templateUrl: 'views/temp_data.html'
 	})
-	.when('/motion',{
-		controller: 'motionController',
-		templateUrl: 'views/motion.html'
-	})
-	.when('/tempfigure/:date',{
+	.when('/tempfigure/:id/:date',{
 		controller: 'temp_figure_controller',
 		templateUrl: 'views/temp_figure.html'
 	})
-	.when('/motionfigure',{
-		controller: 'motion_figure_controller',
-		templateUrl: 'views/motion_figure.html'
+	.when('/register',{
+		controller: 'register_device_controller',
+		templateUrl: 'views/register_device.html'
+	})
+	.when('/register_success',{
+		templateUrl: 'views/register_success.html'
 	})
 });
