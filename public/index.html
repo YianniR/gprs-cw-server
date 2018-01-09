@@ -1,12 +1,27 @@
 <html ng-app="myApp">
 <html>
+  <style>
+    body {
+        background: AliceBlue
+        }
+    section {
+        background: DodgerBlue;
+        color: black;
+        border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) }
+  </style>
 <head>
-	<title>SensorDataAPI</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
+  <title>The Connected Home</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -15,36 +30,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Sensor Data API</a>
+          <a class="navbar-brand" href="#">The Connected Home</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#!/temp_select_date">View Temperature Data</a></li>
-            <li><a href="#!/motion_select_date">View Movement Data</a></li>
-            <li><a href="#!/tempfigure">View Temperature figure</a></li>
-            <li><a href="#!/motionfigure">View Movement figure</a></li>
-
+            <li><a href="#!/tempfigure">Register your device</a></li>
+            <li><a href="#!/tempfigure">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    <section>
+    <div class="midcontainer">
 
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-12">
-    			<div ng-view></div>
-    		</div>
-    	</div>
+          <div ng-view></div>
+
     </div>
-
-	<script src="/bower_components/jquery/dist/jquery.js"></script>
-	<script src="/bower_components/angular/angular.js"></script>
-	<script src="/bower_components/angular-route/angular-route.js"></script>
-	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    </section>
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
   <script src="/app.js"></script>
-	<script src="/controllers/motionController.js"></script>
-	<script src="/controllers/tempController.js"></script>
+  <script src="/controllers/motionController.js"></script>
+  <script src="/controllers/tempController.js"></script>
   <script src="/controllers/motion_figure_controller.js"></script>
   <script src="/controllers/temp_figure_controller.js"></script>
   <script src="/controllers/temp_selected_controller.js"></script>

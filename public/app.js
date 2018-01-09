@@ -2,10 +2,11 @@ var myApp = angular.module('myApp',['ngRoute']);
 
 myApp.config(function($routeProvider){
 	$routeProvider.when('/',{
+		controller:'temp_selected_controller',
 		templateUrl: 'views/main.html'
 	})
 	.when('/temp_select_date',{
-		controller:'temp_selected_controller',
+		//controller:'temp_selected_controller',
 		templateUrl: 'views/temp_select_date.html'
 	})
 	.when('/temp_data/:date',{
@@ -16,7 +17,7 @@ myApp.config(function($routeProvider){
 		controller: 'motionController',
 		templateUrl: 'views/motion.html'
 	})
-	.when('/tempfigure',{
+	.when('/tempfigure/:date',{
 		controller: 'temp_figure_controller',
 		templateUrl: 'views/temp_figure.html'
 	})
