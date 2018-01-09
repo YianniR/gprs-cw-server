@@ -17,21 +17,36 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
         $scope.temps = responce.data;
 
       var i;
+      var j;
       var localtemp = new Array();
+      var localhumi = new Array();
+      var localmove = new Array();
+
       var localtempdate = new Array();
 
+      for (i = 0; i<localData.length; i++ ){
+          localtemp.push(localData[i].data[0]);
+          localhumi.push(localData[i].data[1]);
+          localmove.push(localData[i].data[3]);
+          localtempdate.push(localData[i].createdDate);
+      };
 
-      if (localData.length<=10) {
-       for (i = 0; i<localData.length; i++ ){
-        localtemp.push(localData[i].data[0]);
-        localtempdate.push(localData[i].createdDate);
-        };
-      }
+      var json = JSON.stringify(localtempdate);
+      console.log("loading json date");
 
-      else
-        for (i = localData.length-10; i<localData.length; i++ ){
-        localtemp.push(localData[i].data[0]);
-        localtempdate.push(localData[i].createdDate);
+      var dateStr = JSON.parse(json);
+      console.log(dateStr);
+
+      var date_formatted = new Array();
+      var hours = new Array();
+      var minites = new Array();
+      var date_updated = new Array();
+
+      for (i = 0; i<dateStr.length; i++){
+        date_formatted[i] = new Date(dateStr[i]);
+        hours[i] = date_formatted[i].getHours();
+        minites[i] = date_formatted[i].getMinutes();
+        date_updated[i] = hours[i] + ":" + minites[i];
       };
 
       var tempchart = document.getElementById('tempchart').getContext('2d');
@@ -44,7 +59,7 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
         type:'line', 
         data:{
           
-          labels: localtempdate,
+          labels: date_updated,
           datasets:[{
             label:'Temperture',
             data: localtemp,
