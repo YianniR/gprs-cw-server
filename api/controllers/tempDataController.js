@@ -27,6 +27,7 @@ exports.readbyDate_sensorData = function(req,res){
 
 exports.create_sensorData = function(req, res) {
   var new_sensorData = new sensorData(req.body);
+  console.log(req.body)
   new_sensorData.save(function(err, sensorData) {
     if (err)
       res.send(err);
