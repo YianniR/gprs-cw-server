@@ -4,17 +4,25 @@
 	 	<center>
 	 		<h1>Device Registration</h1>
 	 		<h4>Register a new device to the network.</h4>
-	 		<p>Input your device details:</p>
+	 		<p>Input your device details bellow. Each device is restricted to 3 sensors.</p>
 	 		<br><br>
 		
 		<div class = "row">
-			<div class="col-sm-3">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2">
+			<br>
 			<p>Device Name: </p>
 			<p>IMEI: </p>
+			<p>Sensor 1 type: </p>
+			<p>Sensor 2 type: </p>
+			<p>Sensor 3 type: </p>
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-6">
 		<input id="device-name" type="text" class="form-control" placeholder="e.g. Office or Living Room" align="center">
 		<input id="IMEI" type="text" class="form-control" placeholder="IMEI Number" align="center">
+		<input id="datatype1" type="text" class="form-control" placeholder="e.g. Temperature" align="center">
+		<input id="datatype2" type="text" class="form-control" placeholder="e.g. Humidity" align="center">
+		<input id="datatype3" type="text" class="form-control" placeholder="e.g. Pressure" align="center">
 			</div>
 		</div>
 

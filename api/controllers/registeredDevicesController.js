@@ -11,19 +11,20 @@ exports.list_all_sensorData = function(req, res) {
   });
 };
 
-exports.readbyDate_sensorData = function(req,res){
+exports.readbyIMEI_sensorData = function(req,res){
   sensorData.find({}, function(err, sensorData) {
     if (err)
       res.send(err);
     var search_data = sensorData.filter(function(value){
-
-      var query_date = new Date(req.params.sensorDataCreatedDate);
-      var data_date = new Date(value.createdDate);
-      return data_date.getDate()==query_date.getDate();
+      var query_imei = req.params.imei;
+      var data_imei = value.imei;
+      if(query_imei==data_imei){
+        return true;
+      }
     })
     res.json(search_data);
   });
-}
+};
 
 exports.create_sensorData = function(req, res) {
   var new_sensorData = new sensorData(req.body);

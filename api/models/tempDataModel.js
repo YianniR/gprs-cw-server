@@ -13,10 +13,6 @@ var tempSchema = new Schema({
   data: {
     type: Array,
     default: [999,999,999]
-  },
-  datatypes: {
-    type: Array,
-    default: ['T','P','H']
   }
 });
 

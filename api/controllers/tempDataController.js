@@ -29,7 +29,7 @@ exports.readbyDate_sensorData = function(req,res){
     })
     res.json(search_data);
   });
-}
+};
 
 exports.create_sensorData = function(req, res) {
   var new_sensorData = new sensorData(req.body);

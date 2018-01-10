@@ -8,7 +8,11 @@ myApp.controller('register_device_controller', ['$scope', '$http', '$location', 
       var data;
       data={
         device_name: document.getElementById('device-name').value,
-        imei: document.getElementById('IMEI').value
+        imei: document.getElementById('IMEI').value,
+        datatype1: document.getElementById('datatype1').value,
+        datatype2: document.getElementById('datatype2').value,
+        datatype3: document.getElementById('datatype3').value
+
       };
       console.log(data)
       $http.post('/api/registered_devices',data).then(function(responce){
