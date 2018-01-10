@@ -15,7 +15,7 @@ myApp.controller('register_device_controller', ['$scope', '$http', '$location', 
 
       };
       console.log(data)
-      $http.post('/api/registered_devices',data).then(function(responce){
+      $http.post('/api_registered_devices',data).then(function(responce){
         $scope.temps = responce.data;
       });
 
@@ -25,7 +25,7 @@ myApp.controller('register_device_controller', ['$scope', '$http', '$location', 
   }
 
   $scope.getDevices = function(){
-    $http.get('/api/registered_devices').then(function(responce){
+    $http.get('/api_registered_devices').then(function(responce){
       $scope.temps = responce.data;
     });
   }
@@ -33,7 +33,7 @@ myApp.controller('register_device_controller', ['$scope', '$http', '$location', 
   $scope.getRegisteredDevicesatDate = function(){
     var date = $routeParams.date;
     console.log(date);
-    $http.get('/api/registered_devices/' + date).then(function(responce){
+    $http.get('/api_registered_devices/' + date).then(function(responce){
       $scope.temps = responce.data;
     });
   }
