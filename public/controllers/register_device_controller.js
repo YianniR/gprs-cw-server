@@ -21,7 +21,8 @@ myApp.controller('register_device_controller', ['$scope', '$http', '$location', 
               imei: document.getElementById('IMEI').value,
               datatype1: document.getElementById('datatype1').value,
               datatype2: document.getElementById('datatype2').value,
-              datatype3: document.getElementById('datatype3').value
+              datatype3: document.getElementById('datatype3').value,
+              datatype4: document.getElementById('datatype4').value
             };
 
             $http.post('/api_registered_devices',data).then(function(responce){
@@ -41,7 +42,8 @@ myApp.controller('register_device_controller', ['$scope', '$http', '$location', 
             imei: document.getElementById('IMEI').value,
             datatype1: document.getElementById('datatype1').value,
             datatype2: document.getElementById('datatype2').value,
-            datatype3: document.getElementById('datatype3').value
+            datatype3: document.getElementById('datatype3').value,
+            datatype4: document.getElementById('datatype4').value
           };
 
           $http.post('/api_registered_devices',data).then(function(responce){

@@ -25,6 +25,10 @@ var registerSchema = new Schema({
   datatype3: {
     type: String,
     default: 'Sensor 3'
+  },
+  datatype4: {
+    type: String,
+    default: 'Sensor 4'
   }
 });
 

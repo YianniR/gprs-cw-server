@@ -42,6 +42,7 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
           var localtemp = new Array();
           var localhumi = new Array();
           var localmove = new Array();
+          var locallight = new Array();
 
           var localtempdate = new Array();
 
@@ -49,6 +50,7 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
               localtemp.push(localData[i].data[0]);
               localhumi.push(localData[i].data[1]);
               localmove.push(localData[i].data[2]);
+              locallight.push(localData[i].data[3]);
               localtempdate.push(localData[i].createdDate);
           };
 
@@ -237,6 +239,60 @@ myApp.controller('temp_figure_controller', ['$scope', '$http', '$location', '$ro
               }
             }
           });
+
+          var LightChart = new Chart(lightchart, {
+            type:'line', 
+            data:{
+              
+              labels: date_updated,
+              datasets:[{
+                label:latest_device_data.datatype4,
+                data: locallight,
+                
+                backgroundColor:[
+                  
+                  'rgba(255, 255, 0, 0.6)'
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
+              }]
+            },
+            options:{
+              title:{
+                display:true,
+                text:latest_device_data.datatype4 +' from ' + latest_device_data.device_name,
+                fontSize:25
+              },
+              legend:{
+                display:true,
+                position:'right',
+                labels:{
+                  fontColor:'#000'
+                }
+              },
+              layout:{
+                padding:{
+                  left:50,
+                  right:0,
+                  bottom:0,
+                  top:0
+                }
+              },
+              tooltips:{
+                enabled:true
+              },
+              scales:{
+                yAxes:[{
+                  ticks:{
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+
         });
       })
 
