@@ -8,6 +8,7 @@ MongoDB: https://docs.mongodb.com/manual/installation/
 
 Once you have these installed do:
 ```
+  npm install -g bower
   npm install --save-dev nodemon
   npm install express --save
   npm install mongoose --save
